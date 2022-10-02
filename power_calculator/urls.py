@@ -14,11 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
+from wattage_calculator import views as watt_views
 
 urlpatterns = [
+    path('admin/doc/', include('django.contrib.admindocs.urls')), 
     path('admin/', admin.site.urls),
-    # path('',views.index,'index'),
-     path('',TemplateView.as_view(template_name='homepage.html')),
+    path('',TemplateView.as_view(template_name='homepage.html')),
+    # path('calc',watt_views.power_analysis,name='pa'), {example pipeline hai yeh}
 ]
